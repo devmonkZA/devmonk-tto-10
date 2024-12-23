@@ -12,6 +12,15 @@ ifneq ($(GATES),yes)
 # RTL simulation:
 SIM_BUILD				= sim_build/rtl
 VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,$(PROJECT_SOURCES))
+VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,reg_bank_reduced.v)
+VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,uart_rx.v)
+VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,gps_gen_core.v)
+VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,gc_gen.v)
+VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,nco.v)
+VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,lookup_4x1_sine.v)
+VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,lookup_4x1_cos.v)
+VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,prng.v)
+COMPILE_ARGS 		+= -I$(SRC_DIR)
 
 else
 
@@ -30,11 +39,8 @@ VERILOG_SOURCES += $(PWD)/gate_level_netlist.v
 
 endif
 
-# Allow sharing configuration between design and testbench via `include`:
-COMPILE_ARGS 		+= -I$(SRC_DIR)
-
 # Include the testbench sources:
-VERILOG_SOURCES += $(PWD)/tb.v
+VERILOG_SOURCES += $(PWD)/tb.v 
 TOPLEVEL = tb
 
 # MODULE is the basename of the Python test file
