@@ -5,7 +5,7 @@
 
 `default_nettype none
 // just a stub to keep the Tiny Tapeout tools happy
-module tt_um_maheredia (
+module tt_um_devmonkZA_10 (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
